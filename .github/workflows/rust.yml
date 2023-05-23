@@ -43,6 +43,9 @@ jobs:
 
       - name: Run cargo doc
         run: cargo doc
+
+      - name: Redirect index.html
+        run: echo '<meta http-equiv=refresh content=0;url=effect_cell/index.html>' > target/doc/index.html
       
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -50,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "./target/doc/effect_cell"
+          path: "./target/doc"
 
       - name: Deploy to Pages
         id: deployment
