@@ -50,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          publish_dir: "./target/doc/effect_cell"
+          path: "./target/doc/effect_cell"
 
       - name: Deploy to Pages
         id: deployment
