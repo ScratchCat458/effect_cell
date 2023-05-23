@@ -25,4 +25,4 @@ fn main() {
 ## Documentation
 Since this is a derivative project, rustdoc is hosted locally using Github Actions.
 
-Documentation - [https://scratchcat458.github.io/effect-cell](https://scratchcat458.github.io/effect-cell) 
+Documentation - [https://scratchcat458.github.io/effect_cell](https://scratchcat458.github.io/effect_cell) 

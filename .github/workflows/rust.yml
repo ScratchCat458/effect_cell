@@ -3,6 +3,11 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 name: Standard CI
 
 jobs:
@@ -25,6 +30,9 @@ jobs:
   deploy:
     name: Deploy to Github Pages
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     needs: tests
     steps:
       - name: Checkout sources
@@ -35,9 +43,15 @@ jobs:
 
       - name: Run cargo doc
         run: cargo doc
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
 
-      - name: Deploy Rustdoc
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/doc/effect_cell
+          publish_dir: "./target/doc/effect_cell"
+
+      - name: Deploy to Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
