@@ -1,4 +1,5 @@
 #![doc = include_str!("../README.md")]
+use core::fmt::Debug;
 use core::ops::{
     AddAssign, BitAndAssign, BitOrAssign, BitXorAssign, DivAssign, MulAssign, RemAssign, ShlAssign,
     ShrAssign, SubAssign,
@@ -132,6 +133,14 @@ where
 {
     fn partial_cmp(&self, other: &T) -> Option<std::cmp::Ordering> {
         self.data.partial_cmp(other)
+    }
+}
+
+impl<T: Debug> Debug for EffectCell<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("EffectCell")
+            .field("data", &self.data)
+            .finish_non_exhaustive()
     }
 }
 
@@ -326,6 +335,14 @@ where
 {
     fn partial_cmp(&self, other: &T) -> Option<std::cmp::Ordering> {
         self.data.partial_cmp(other)
+    }
+}
+
+impl<T: Debug> Debug for OrderedEffectCell<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("OrderedEffectCell")
+            .field("data", &self.data)
+            .finish_non_exhaustive()
     }
 }
 
