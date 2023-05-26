@@ -1,3 +1,7 @@
+Note: This repository has been archived.
+To find my work on this project see the [official repository](https://github.com/fprasx/effect-cell)
+or my [fork](https://github.com/ScratchCat458/effect-cell) for work-in-progress patches. 
+
 # Effect Cell
 
 A slimed down implementation of the Observer pattern using Rust's `Fn` trait.
